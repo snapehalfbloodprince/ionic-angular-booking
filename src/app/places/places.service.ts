@@ -15,7 +15,7 @@ export class PlacesService {
     ),
     new Place(
       "p2",
-      "T-Hotel",
+      "Hotel Flora",
       "Near the beautiful sea of Cagliari",
       "https://media-cdn.tripadvisor.com/media/photo-s/0e/2c/16/c5/hotel-flora.jpg",
       199.99
@@ -29,7 +29,7 @@ export class PlacesService {
     )
   ];
 
-  getPlaces() {
+  get places() {
     return [...this._places];
   }
 
