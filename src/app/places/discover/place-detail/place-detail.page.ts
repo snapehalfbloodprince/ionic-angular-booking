@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { CreateBookingComponent } from '../../../bookings/create-booking/create-booking.component';
 import { Place } from '../../place.model';
 import { PlacesService } from '../../places.service';
 
@@ -12,7 +13,7 @@ import { PlacesService } from '../../places.service';
 export class PlaceDetailPage implements OnInit {
 
   place: Place;
-  constructor(private navCtrl: NavController, private activatedRoute: ActivatedRoute, private placesService: PlacesService) { }
+  constructor(private navCtrl: NavController, private activatedRoute: ActivatedRoute, private placesService: PlacesService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap=>{
@@ -25,7 +26,10 @@ export class PlaceDetailPage implements OnInit {
   }
 
   onBookPlace(){
-    this.navCtrl.navigateBack('/places/tabs/discover');
+    // this.navCtrl.navigateBack('/places/tabs/discover');
+    this.modalController.create({component:CreateBookingComponent}).then(modalEl=>{
+      modalEl.present();
+    });
   }
 
 }
